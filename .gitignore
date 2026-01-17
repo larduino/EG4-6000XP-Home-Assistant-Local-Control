@@ -205,3 +205,13 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Home Assistant specific ignores
+secrets.yaml            # THIS PROTECTS YOUR PASSWORDS/SERIAL PORTS
+*.db                    # Keeps your massive history database out of Git
+*.db-shm
+*.db-wal
+.storage/               # Contains unique IDs and internal tokens
+.cloud/                 # Nabu Casa credentials
+home-assistant.log      # Your logs can contain sensitive info
+ip_bans.yaml            # Security bans
