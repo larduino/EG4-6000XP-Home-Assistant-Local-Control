@@ -45,3 +45,10 @@ modbus:
         scale: 0.1
         unit_of_measurement: "A"
         device_class: current
+```
+
+⚠️ Disclaimer
+
+Proceed at your own risk. Modbus allows for direct writing to inverter registers. 
+Incorrect settings can damage your battery or inverter.
+Always double-check register addresses before writing commands.
