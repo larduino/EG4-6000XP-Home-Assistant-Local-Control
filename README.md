@@ -5,7 +5,9 @@ Ditch the cloud and take direct control of your EG4 6000XP via RS485 and Home As
 ## 🔌 Hardware Setup
 
 ### 1. Wiring the RJ45 Cable
-Connect a standard CAT5/6 cable to the **INV485/CAN** port. Use the following pinout for your RS485 adapter:
+Connect a standard CAT5/6 cable to the **INV485** port. The correct port is above the battery Can Port.
+Unplug the wifi dongle because it shares the same port.
+Use the following pinout for your RS485 adapter:
 
 | Function | RJ45 Pin (T-568B) | Waveshare Terminal |
 | :--- | :--- | :--- |
