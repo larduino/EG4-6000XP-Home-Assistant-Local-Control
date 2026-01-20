@@ -23,28 +23,134 @@ Add the following to your `configuration.yaml`. Note the use of `input_type: inp
 
 ```yaml
 modbus:
+
   - name: eg4_6000xp
     type: serial
     port: /dev/serial/by-id/usb-FTDI_Dual_RS232-HS-if00-port0
     baudrate: 19200
+    bytesize: 8
+    method: rtu
+    parity: N
+    stopbits: 1
+    timeout: 5
+    delay: 2
     sensors:
-      - name: "EG4 Battery Voltage"
-        unique_id: "eg4_batt_v"
+    
+      # --- LOAD / EPS DATA ---
+      - name: "eg4_EPS_L1_Power"
+        unique_id: "6000xp_l1_power"
+        address: 129
         slave: 1
-        address: 4
+        unit_of_measurement: "W"
+        device_class: power
         input_type: input
-        scale: 0.1
-        unit_of_measurement: "V"
-        device_class: voltage
 
-      - name: "EG4 Battery Current"
-        unique_id: "eg4_batt_c"
+      - name: "eg4_EPS_L2_Power"
+        unique_id: "6000xp_l2_power"
+        address: 130
         slave: 1
-        address: 5
+        unit_of_measurement: "W"
+        device_class: power
         input_type: input
+
+      - name: "eg4_EPS_Total_Power"
+        unique_id: "6000xp_total_power"
+        address: 24
+        slave: 1
+        unit_of_measurement: "W"
+        device_class: power
+        input_type: input
+
+      - name: "eg4_EPS_Voltage_240V"
+        unique_id: "6000xp_voltage_240v"
+        address: 20
+        slave: 1
+        unit_of_measurement: "V"
         scale: 0.1
-        unit_of_measurement: "A"
-        device_class: current
+        precision: 1
+        input_type: input
+
+      - name: "eg4_EPS_Frequency"
+        unique_id: "6000xp_frequency"
+        address: 23
+        slave: 1
+        unit_of_measurement: "Hz"
+        scale: 0.01
+        precision: 2
+        input_type: input
+
+      - name: "eg4_Energy_Output_Today"
+        unique_id: "6000xp_energy_output_today"
+        address: 35
+        slave: 1
+        unit_of_measurement: "kWh"
+        scale: 0.1
+        precision: 1
+        device_class: energy
+        state_class: total_increasing
+        input_type: input
+
+      # --- SOLAR (PV) DATA ---
+      - name: "eg4_PV1_Voltage"
+        unique_id: "6000xp_pv1_voltage"
+        address: 1
+        slave: 1
+        unit_of_measurement: "V"
+        scale: 0.1
+        precision: 1
+        input_type: input
+
+      - name: "eg4_PV2_Voltage"
+        unique_id: "6000xp_pv2_voltage"
+        address: 2
+        slave: 1
+        unit_of_measurement: "V"
+        scale: 0.1
+        precision: 1
+        input_type: input
+
+      - name: "eg4_PV1_Power"
+        unique_id: "6000xp_pv1_power"
+        address: 7
+        slave: 1
+        unit_of_measurement: "W"
+        device_class: power
+        input_type: input
+
+      - name: "eg4_PV2_Power"
+        unique_id: "6000xp_pv2_power"
+        address: 8
+        slave: 1
+        unit_of_measurement: "W"
+        device_class: power
+        input_type: input
+
+      - name: "eg4_PV1_Energy_Today"
+        unique_id: "6000xp_pv1_energy_today"
+        address: 28
+        slave: 1
+        unit_of_measurement: "kWh"
+        scale: 0.1
+        precision: 1
+        input_type: input
+
+      - name: "eg4_PV2_Energy_Today"
+        unique_id: "6000xp_pv2_energy_today"
+        address: 29
+        slave: 1
+        unit_of_measurement: "kWh"
+        scale: 0.1
+        precision: 1
+        input_type: input
+
+      # --- BATTERY DATA ---
+      - name: "eg4_Battery_SOC"
+        unique_id: "6000xp_battery_soc"
+        address: 5
+        slave: 1
+        unit_of_measurement: "%"
+        device_class: battery
+        input_type: input
 ```
 
 ⚠️ Disclaimer
